@@ -455,6 +455,7 @@ export default {
           {
             name: '商品销量',
             type: 'bar',
+            smooth: true,
             data: this.item_quant,
             // Set `large` for large data amount
             large: true,
@@ -683,6 +684,7 @@ export default {
           {
             name: '商品销量',
             type: 'bar',
+            smooth: true,
             data: this.item_quant,
             // Set `large` for large data amount
             large: true,
