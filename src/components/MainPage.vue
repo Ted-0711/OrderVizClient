@@ -418,7 +418,7 @@ export default {
           trigger: 'axis',
           formatter(params) {
             let circle = `<span style="display:inline-block;margin-right:5px;border-radius:50%;width:10px;height:10px;left:5px;background-color:`;
-            let data = `${circle}#E6A23C"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1].toFixed(2)}</b>`;
+            let data = `${circle}#E6A23C"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1]}</b>`;
             return `${params[0]['value'][0]}<br/>${data}`
           },
           axisPointer: {
@@ -468,13 +468,14 @@ export default {
     },
     initChart5(){
       this.chartInstance = this.$echarts.init(this.$refs.chart5);
+      const color = "#409EFF"
       const option = {
         tooltip: {
           trigger: 'axis',
           formatter(params) {
             let date = new Date(params[0]['value'][0])
             let circle = `<span style="display:inline-block;margin-right:5px;border-radius:50%;width:10px;height:10px;left:5px;background-color:`;
-            let data = `${circle}#409EFF"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1]}</b>`;
+            let data = `${circle}${color}"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1]}</b>`;
             return `${date.getFullYear()}-${padding(date.getMonth()+1, 2)}-${padding(date.getDate(), 2)}<br/>${data}`
           }
         },
@@ -516,12 +517,30 @@ export default {
             smooth: true,
             symbol: 'none',
             lineStyle: {
-              color: "#409EFF"
+              color: color
+            },
+            itemStyle: {
+              color: color,
             },
             areaStyle: {
-              color: "#409EFF"
+              color: color
             },
-            data: this.order_quant
+            data: this.order_quant,
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+              ],
+              itemStyle: {
+                color: color
+              },
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Avg' }],
+              lineStyle: {
+                color: color
+              },
+            }
           }
         ]
       };
@@ -529,13 +548,14 @@ export default {
     },
     initChart6(){
       this.chartInstance = this.$echarts.init(this.$refs.chart6);
+      const color = '#67C23A'
       const option = {
         tooltip: {
           trigger: 'axis',
           formatter(params) {
             let date = new Date(params[0]['value'][0])
             let circle = `<span style="display:inline-block;margin-right:5px;border-radius:50%;width:10px;height:10px;left:5px;background-color:`;
-            let data = `${circle}#67C23A"></span>${params[0]["seriesName"]}&emsp;<b>￥${params[0]['value'][1].toFixed(2)}</b>`;
+            let data = `${circle}${color}"></span>${params[0]["seriesName"]}&emsp;<b>￥${params[0]['value'][1].toFixed(2)}</b>`;
             return `${date.getFullYear()}-${padding(date.getMonth()+1, 2)}-${padding(date.getDate(), 2)}<br/>${data}`
           }
         },
@@ -577,12 +597,30 @@ export default {
             smooth: true,
             symbol: 'none',
             lineStyle: {
-              color: '#67C23A'
+              color: color
+            },
+            itemStyle: {
+              color: color,
             },
             areaStyle: {
-              color: '#67C23A'
+              color: color
             },
             data: this.order_sale,
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+              ],
+              itemStyle: {
+                color: color
+              },
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Avg' }],
+              lineStyle: {
+                color: color
+              },
+            }
           }
         ]
       };
@@ -590,12 +628,13 @@ export default {
     },
     initChart7(){
       this.chartInstance = this.$echarts.init(this.$refs.chart7);
+      const color = '#E6A23C'
       const option = {
         tooltip: {
           trigger: 'axis',
           formatter(params) {
             let circle = `<span style="display:inline-block;margin-right:5px;border-radius:50%;width:10px;height:10px;left:5px;background-color:`;
-            let data = `${circle}#E6A23C"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1].toFixed(2)}</b>`;
+            let data = `${circle}${color}"></span>${params[0]["seriesName"]}&emsp;<b>${params[0]['value'][1]}</b>`;
             return `${params[0]['value'][0]}<br/>${data}`
           },
           axisPointer: {
@@ -648,7 +687,22 @@ export default {
             // Set `large` for large data amount
             large: true,
             itemStyle: {
-              color: '#E6A23C',
+              color: color,
+            },
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+              ],
+              itemStyle: {
+                color: color
+              },
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Avg' }],
+              lineStyle: {
+                color: color
+              },
             }
           }
         ]
