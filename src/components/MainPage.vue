@@ -430,10 +430,13 @@ export default {
         },
         dataZoom: [
           {
-            type: 'inside'
+            type: 'inside',
+            start: 0,
+            end: 15
           },
           {
-            type: 'slider'
+            start: 0,
+            end: 15
           }
         ],
         xAxis: {
@@ -455,7 +458,7 @@ export default {
           {
             name: '商品销量',
             type: 'bar',
-            smooth: true,
+            animation: true,
             data: this.item_quant,
             // Set `large` for large data amount
             large: true,
@@ -659,10 +662,13 @@ export default {
         },
         dataZoom: [
           {
-            type: 'inside'
+            type: 'inside',
+            start: 0,
+            end: 15
           },
           {
-            type: 'slider'
+            start: 0,
+            end: 15
           }
         ],
         xAxis: {
@@ -684,7 +690,7 @@ export default {
           {
             name: '商品销量',
             type: 'bar',
-            smooth: true,
+            animation: true,
             data: this.item_quant,
             // Set `large` for large data amount
             large: true,
