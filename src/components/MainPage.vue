@@ -2,7 +2,7 @@
   <div class="main">
     <el-row>
       <el-row>
-      <h1>零售未来——基于人工智能的零售商品结算系统</h1>
+      <h1>零售未来——基于人工智能的零售商品自助结账系统</h1>
       <h2>订单数据实时监控平台</h2>
       </el-row>
       <el-tabs tab-position="left" v-model="panel" @tab-click="handleClick" style="margin-right: 20px;">
@@ -91,7 +91,7 @@
             :data="tableData"
             height="700"
             stripe
-            style="width: 96%; margin-left: 2%;">
+            style="width: 95%; margin-left: 2%;">
             <el-table-column
               prop="order_id"
               label="订单编号"
@@ -277,7 +277,7 @@ export default {
           order_id: v[0],
           user_id: getUserID(v[1]),
           tot_amount: '￥' + v[2].toFixed(2),
-          date: `${v[3].getFullYear()}-${padding(v[3].getMonth(), 2)}-${padding(v[3].getDate(), 2)}`,
+          date: `${v[3].getFullYear()}-${padding(v[3].getMonth() + 1, 2)}-${padding(v[3].getDate(), 2)}`,
           time: `${padding(v[3].getHours(), 2)}:${padding(v[3].getMinutes(), 2)}:${padding(v[3].getSeconds(), 2)}`,
           detail: ((x) => {
             let content = ""
