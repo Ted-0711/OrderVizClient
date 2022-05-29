@@ -195,13 +195,15 @@ export default {
     generateData() {
       // const faker = this.$faker()
       // console.log(`\"${faker.datatype.number({ min: 1, max: 2388 })}\": ${faker.datatype.number({ min: 1, max: 10 })}, \"${faker.datatype.number({ min: 1, max: 2388 })}\": ${faker.datatype.number({ min: 1, max: 10 })}`)
-      // this.order_list = Array.from(Array(20000), function(v, k) {
+      // this.order_list = Array.from(Array(30000), function(v, k) {
       //   return [ k + 1, 
       //     faker.datatype.number({ min: 1, max: 100 }), 
       //     faker.datatype.number({ min: 10, max: 1000, precision: 0.01 }), 
-      //     faker.date.past(),
+      //     // faker.date.past(),
+      //     faker.date.between('2021-04-18T16:00:00.000Z', '2022-08-22T15:59:59.000Z'),
       //     JSON.parse(`{\"${faker.datatype.number({ min: 1, max: 2388 })}\": ${faker.datatype.number({ min: 1, max: 10 })}, \"${faker.datatype.number({ min: 1, max: 2388 })}\": ${faker.datatype.number({ min: 1, max: 10 })}}`), ]
       // })
+      // console.log(JSON.stringify(this.order_list))
       this.order_list = require('../../static/order_list.json')
       this.order_list.forEach(function(item, index, arr) {
         item[3] = new Date(item[3])
@@ -233,6 +235,8 @@ export default {
       })
       this.order_list = this.order_list.concat(res['order_list'])
       this.item_list = res['item_list']
+      const item_name = require('../../static/item_name.json')
+      this.item_list = Array.from(this.item_list, (v, k) => [v[0], item_name[k], v[2]])
     },
     calcData() {
       let sort_orders = this.order_list.sort((a, b) => a[3] - b[3]),
@@ -250,8 +254,8 @@ export default {
       clear_time(max_date)
       let date_scale_times = Array.from(Array((max_date - min_date) / (24 * 60 * 60 * 1000) + 1), 
         (v, k) => min_date.getTime() + k * 24 * 60 * 60 * 1000)
-      console.log(date_scale_times)
-      console.log(this.item_list)
+      // console.log(date_scale_times)
+      // console.log(this.item_list)
 
       // Date Scale
       this.order_quant = Array.from(date_scale_times, (v, k) => [v, 0])
